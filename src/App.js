@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+
+const tele = window.Telegram.WebApp;
 
 function App() {
+  useEffect(() => {
+    tele.ready();
+  });
+
+  const onCheckout = () => {
+    tele.MainButton.text = "Pay :)";
+    tele.MainButton.show();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" onClick={onCheckout}>
+      Hello from react
     </div>
   );
 }
